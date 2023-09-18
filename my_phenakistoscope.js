@@ -1,4 +1,4 @@
-const SLICE_COUNT = 10;
+const SLICE_COUNT = 15;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
@@ -10,10 +10,10 @@ function setup_pScope(pScope){
 
 function setup_layers(pScope){
 
-  new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
+  new PLayer(null, 152, 206, 235);  //lets us draw the whole circle background, ignoring the boundaries
 
   var layer1 = new PLayer(faces);
-  layer1.mode( SWIRL(5) );
+  layer1.mode( SWIRL(8) );
   layer1.set_boundary( 200, 1000 );
 
   var layer2 = new PLayer(squares);
@@ -23,7 +23,7 @@ function setup_layers(pScope){
 
 function faces(x, y, animation, pScope){
   
-  scale(animation.frame*2);
+  scale(animation.wave(2));
 
   ellipse(0,0,50,50); // draw head
   fill(30);
@@ -41,9 +41,11 @@ function squares(x, y, animation, pScope){
   let backgroundArcEnd = 270 + angleOffset;
 
   fill(66, 135, 245)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  arc(x,y,400,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+  rect(-10,300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
+  
+ 
 }
