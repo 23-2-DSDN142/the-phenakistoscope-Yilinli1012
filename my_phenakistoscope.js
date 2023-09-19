@@ -7,23 +7,25 @@ function setup_pScope(pScope){
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image("heart_circle" , "png");
+  pScope.load_image("cat1" , "png");
 }
 
 function setup_layers(pScope){
 
   new PLayer(null, 152, 206, 235);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var layer1 = new PLayer(heart_circle);
+  var layer1 = new PLayer(cat1);
   layer1.mode( SWIRL(8) );
-  layer1.set_boundary( 200, 1000 );
+  layer1.set_boundary( 20, 600 );
 
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
 }
 
-function heart_circle(x, y, animation, pScope){
-  pScope.draw_image("heart_circle",x,y);
+function cat1(x, y, animation, pScope){
+  pScope.draw_image("cat1",x,y);
+  scale()
   scale(animation.wave(2));
 
   ellipse(0,0,50,50); // draw head
@@ -35,6 +37,9 @@ function heart_circle(x, y, animation, pScope){
 }
 
 function squares(x, y, animation, pScope){
+
+  pScope.draw_image("heart_circle",x,y);
+  scale(0.5,0.5)
 
   // this is how you set up a background for a specific layer
   let angleOffset = (360 / SLICE_COUNT) / 2
