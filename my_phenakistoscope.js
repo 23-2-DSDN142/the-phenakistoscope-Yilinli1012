@@ -40,7 +40,7 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(66, 135, 245)
+  fill(107, 86, 61)
   arc(x,y,400,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill(255)
